@@ -10,10 +10,12 @@ RUN apt-get update && \
     rm /tmp/mesos-0.28.1.tar.gz && \
     mv /opt/mesos-0.28.1 /opt/mesos
 
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+
 RUN mkdir /opt/mesos/build
 
 WORKDIR /opt/mesos/build
 
-RUN ../configure && make && make install
+RUN ../configure && make
 
 EXPOSE 5050
