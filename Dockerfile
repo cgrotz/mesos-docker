@@ -16,6 +16,6 @@ RUN mkdir /opt/mesos/build
 
 WORKDIR /opt/mesos/build
 
-RUN ../configure && make
+RUN ../configure && make -j 2 V=0
 
 EXPOSE 5050
