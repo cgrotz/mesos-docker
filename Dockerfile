@@ -16,6 +16,6 @@ RUN mkdir /opt/mesos/build
 
 WORKDIR /opt/mesos/build
 
-RUN ../configure && make -j 2 V=0 && make install && ldconfig
+RUN ../configure && make -j 2 V=0 && make install && ldconfig && rm /opt/mesos -R
 
 EXPOSE 5050
