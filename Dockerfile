@@ -8,14 +8,10 @@ RUN apt-get update && \
     wget -q http://apache.openmirror.de/mesos/0.28.1/mesos-0.28.1.tar.gz -O /tmp/mesos-0.28.1.tar.gz && \
     tar xfz /tmp/mesos-0.28.1.tar.gz -C /opt && \
     rm /tmp/mesos-0.28.1.tar.gz && \
-    mv /opt/mesos-0.28.1 /opt/mesos
-
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-
-RUN mkdir /opt/mesos/build
-
-WORKDIR /opt/mesos/build
-
-RUN ../configure && make -j 2 V=0 && make install && ldconfig && rm /opt/mesos -R
+    mv /opt/mesos-0.28.1 /opt/mesos && \
+    set JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 && \
+    mkdir /opt/mesos/build && \
+    cd /opt/mesos/build && \
+    ../configure && make -j 2 V=0 && make install && ldconfig && rm /opt/mesos -R
 
 EXPOSE 5050
