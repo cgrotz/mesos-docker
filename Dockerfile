@@ -13,6 +13,6 @@ RUN apt-get update && \
     set JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 && \
     mkdir /opt/mesos/build && \
     cd /opt/mesos/build && \
-    ../configure && make -j 2 V=0 && make install && ldconfig && rm /opt/mesos -R
+    ../configure && make -j 2 V=0 && make install && ldconfig && rm /opt/mesos -R && apt-get remove -y python-dev 
 
 EXPOSE 5050
